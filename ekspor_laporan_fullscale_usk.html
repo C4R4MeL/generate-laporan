@@ -1,0 +1,362 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+.root{width:1440px;transform-origin:top left;background:#F0F2F5;font-family:'Inter',sans-serif;display:flex;flex-direction:column;}
+.topbar{height:56px;background:#fff;border-bottom:1.5px solid #E5E7EB;display:flex;align-items:center;justify-content:space-between;padding:0 32px;flex-shrink:0;}
+.brand{font-size:16px;font-weight:700;color:#1F3A6D;display:flex;align-items:center;gap:10px;}
+.brand-ico{width:32px;height:32px;background:#1F3A6D;border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.brand-ico i{color:#fff;font-size:17px;}
+.topbar-r{display:flex;align-items:center;gap:18px;}
+.bell{position:relative;cursor:pointer;}
+.bell i{font-size:22px;color:#6B7280;}
+.bell-dot{position:absolute;top:-2px;right:-2px;width:8px;height:8px;background:#EF4444;border-radius:50%;border:2px solid #fff;}
+.dosen-wrap{display:flex;align-items:center;gap:12px;}
+.dosen-txt{text-align:right;}
+.dosen-name{font-size:13px;font-weight:600;color:#111827;}
+.dosen-role{font-size:11px;color:#9CA3AF;}
+.avatar{width:38px;height:38px;border-radius:50%;background:#1F3A6D;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;}
+.body{display:flex;flex:1;min-height:844px;}
+.sidebar{width:220px;background:#fff;border-right:1.5px solid #E5E7EB;padding:20px 0;display:flex;flex-direction:column;flex-shrink:0;}
+.nav-lbl{font-size:10px;font-weight:700;color:#C4C9D4;text-transform:uppercase;letter-spacing:.8px;padding:0 20px;margin-bottom:8px;margin-top:4px;}
+.nav-item{display:flex;align-items:center;gap:12px;padding:11px 20px;font-size:13px;color:#6B7280;cursor:pointer;border-left:3px solid transparent;}
+.nav-item i{font-size:18px;}
+.nav-item:hover{background:#F9FAFB;}
+.nav-item.active{color:#1F3A6D;background:#EEF2FF;border-left-color:#1F3A6D;font-weight:600;}
+.sb-bottom{padding:16px 14px;margin-top:auto;}
+.help-card{background:#EEF2FF;border-radius:10px;padding:14px;}
+.help-ttl{font-size:11px;font-weight:700;color:#1F3A6D;margin-bottom:4px;}
+.help-sub{font-size:11px;color:#6B7280;line-height:1.5;margin-bottom:10px;}
+.help-btn{width:100%;background:#1F3A6D;color:#fff;border:none;border-radius:7px;padding:8px;font-size:12px;font-weight:600;cursor:pointer;}
+.main{flex:1;padding:28px 36px;overflow-y:visible;}
+.bc{font-size:12px;color:#9CA3AF;display:flex;align-items:center;gap:6px;margin-bottom:12px;}
+.bc i{font-size:12px;}
+.bc .cur{color:#374151;font-weight:500;}
+.ph-title{font-size:22px;font-weight:700;color:#111827;margin-bottom:4px;}
+.ph-sub{font-size:13px;color:#6B7280;margin-bottom:22px;}
+.info-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px;}
+.icard{background:#fff;border:1.5px solid #E5E7EB;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:14px;}
+.ic-ico{width:44px;height:44px;border-radius:10px;background:#EEF2FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ic-ico i{font-size:22px;color:#1F3A6D;}
+.ic-lbl{font-size:10px;font-weight:700;color:#9CA3AF;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
+.ic-val{font-size:17px;font-weight:700;color:#111827;}
+.content-row{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px;align-items:start;}
+.card{background:#fff;border:1.5px solid #E5E7EB;border-radius:12px;overflow:hidden;}
+.card-hd{padding:16px 22px;border-bottom:1.5px solid #F3F4F6;display:flex;align-items:center;justify-content:space-between;}
+.card-hd-title{font-size:15px;font-weight:600;color:#111827;display:flex;align-items:center;gap:8px;}
+.card-hd-title i{color:#1F3A6D;font-size:18px;}
+.req-hint{font-size:12px;color:#9CA3AF;}
+.req-hint span{color:#EF4444;}
+.card-bd{padding:22px;}
+.fgrid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;}
+.ffull{margin-bottom:18px;}
+.flabel{display:block;font-size:11px;font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;}
+.req{color:#EF4444;}
+.sw{position:relative;}
+.sw select{width:100%;padding:11px 36px 11px 14px;border:1.5px solid #D1D5DB;border-radius:8px;font-size:14px;color:#111827;background:#fff;appearance:none;outline:none;cursor:pointer;}
+.sw select:focus{border-color:#1F3A6D;box-shadow:0 0 0 3px rgba(31,58,109,.1);}
+.sw .chev{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:15px;color:#9CA3AF;pointer-events:none;}
+.fmt-row{display:flex;gap:12px;}
+.fmtc{flex:1;display:flex;align-items:center;gap:12px;padding:12px 16px;border:1.5px solid #E5E7EB;border-radius:10px;cursor:pointer;}
+.fmtc.sel{border-color:#1F3A6D;background:#EEF2FF;}
+.fmtc input{accent-color:#1F3A6D;width:15px;height:15px;flex-shrink:0;}
+.fmtico{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.fmtico.pdf{background:#FEE2E2;}
+.fmtico.xlsx{background:#DCFCE7;}
+.fmtico.pdf i{color:#DC2626;font-size:22px;}
+.fmtico.xlsx i{color:#16A34A;font-size:22px;}
+.fmt-name{font-size:14px;font-weight:600;color:#111827;}
+.fmt-ext{font-size:11px;color:#9CA3AF;}
+.divider{border:none;border-top:1.5px solid #F3F4F6;margin:20px 0 18px;}
+.prev-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.prev-title{font-size:14px;font-weight:600;color:#111827;display:flex;align-items:center;gap:8px;}
+.prev-title i{color:#1F3A6D;font-size:16px;}
+.badge-ok{background:#DCFCE7;color:#15803D;font-size:11px;font-weight:700;padding:4px 12px;border-radius:99px;display:inline-flex;align-items:center;gap:5px;}
+.badge-ok i{font-size:13px;}
+.tbl-scroll{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed;}
+thead tr{background:#F9FAFB;}
+thead th{padding:10px 12px;text-align:left;font-weight:600;color:#6B7280;font-size:11px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1.5px solid #E5E7EB;white-space:nowrap;}
+tbody tr{border-bottom:1px solid #F3F4F6;}
+tbody tr:last-child{border-bottom:none;}
+tbody td{padding:11px 12px;color:#374151;}
+tbody tr:hover td{background:#FAFAFA;}
+.ga{color:#16A34A;font-weight:700;}
+.gb{color:#2563EB;font-weight:700;}
+.gc{color:#D97706;font-weight:700;}
+.act-footer{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-top:1.5px solid #F3F4F6;background:#FAFAFA;}
+.autosave{font-size:12px;color:#9CA3AF;display:flex;align-items:center;gap:6px;}
+.autosave i{color:#16A34A;font-size:15px;}
+.btn-row{display:flex;gap:12px;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:background .15s;}
+.btn i{font-size:16px;}
+.btn-out{background:#fff;color:#1F3A6D;border:1.5px solid #1F3A6D;}
+.btn-out:hover{background:#EEF2FF;}
+.btn-prim{background:#1F3A6D;color:#fff;}
+.btn-prim:hover{background:#162D56;}
+.btn-prim:disabled{opacity:.4;cursor:not-allowed;}
+.stat-area{padding:0 22px 16px;}
+.sbox{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:8px;font-size:13px;}
+.sbox.loading{background:#EFF6FF;border:1.5px solid #BFDBFE;}
+.sbox.loading i{color:#2563EB;font-size:18px;margin-top:1px;}
+.sbox.ok{background:#F0FDF4;border:1.5px solid #BBF7D0;}
+.sbox.ok i{color:#16A34A;font-size:18px;margin-top:1px;}
+.sbox .st{font-weight:600;color:#111827;margin-bottom:2px;}
+.sbox .ss{color:#6B7280;font-size:12px;}
+.rw-item{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1.5px solid #F3F4F6;}
+.rw-item:last-child{border-bottom:none;}
+.rw-ico{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.rw-ico.pdf{background:#FEE2E2;}
+.rw-ico.xlsx{background:#DCFCE7;}
+.rw-ico.pdf i{color:#DC2626;font-size:20px;}
+.rw-ico.xlsx i{color:#16A34A;font-size:20px;}
+.rw-info{flex:1;min-width:0;}
+.rw-name{font-size:13px;font-weight:600;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rw-date{font-size:11px;color:#9CA3AF;margin-top:2px;}
+.rw-dl{width:32px;height:32px;border-radius:7px;background:#F3F4F6;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
+.rw-dl:hover{background:#E5E7EB;}
+.rw-dl i{font-size:16px;color:#6B7280;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.spin{display:inline-block;animation:spin 1s linear infinite;}
+.scaler{overflow-x:auto;width:100%;}
+</style>
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Halaman ekspor laporan akademik USK E-Learning skala penuh</h2>
+
+<div class="scaler">
+<div class="root" id="root">
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-ico"><i class="ti ti-school" aria-hidden="true"></i></div>
+      USK E-Learning
+    </div>
+    <div class="topbar-r">
+      <div class="bell"><i class="ti ti-bell" aria-hidden="true"></i><span class="bell-dot"></span></div>
+      <div class="dosen-wrap">
+        <div class="dosen-txt">
+          <div class="dosen-name">Dr. Ir. Budi Santoso</div>
+          <div class="dosen-role">Dosen Informatika</div>
+        </div>
+        <div class="avatar">BS</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="sidebar">
+      <div>
+        <div class="nav-lbl">Menu</div>
+        <div class="nav-item"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Beranda</div>
+        <div class="nav-item"><i class="ti ti-school" aria-hidden="true"></i>Kelas</div>
+        <div class="nav-item"><i class="ti ti-book" aria-hidden="true"></i>Materi</div>
+        <div class="nav-item active"><i class="ti ti-star" aria-hidden="true"></i>Nilai</div>
+      </div>
+      <div class="sb-bottom">
+        <div class="help-card">
+          <div class="help-ttl">BANTUAN</div>
+          <div class="help-sub">Butuh bantuan teknis terkait ekspor laporan?</div>
+          <button class="help-btn">Hubungi IT</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="bc">
+        <span>Akademik</span>
+        <i class="ti ti-chevron-right" aria-hidden="true"></i>
+        <span>Penilaian</span>
+        <i class="ti ti-chevron-right" aria-hidden="true"></i>
+        <span class="cur">Ekspor Laporan</span>
+      </div>
+
+      <div class="ph-title">Ekspor Laporan Akademik</div>
+      <div class="ph-sub">Generate dan unduh laporan akademik berdasarkan data nilai yang tersimpan pada sistem.</div>
+
+      <div class="info-row">
+        <div class="icard">
+          <div class="ic-ico"><i class="ti ti-code" aria-hidden="true"></i></div>
+          <div><div class="ic-lbl">Kelas Aktif</div><div class="ic-val">IF3110-A</div></div>
+        </div>
+        <div class="icard">
+          <div class="ic-ico"><i class="ti ti-calendar" aria-hidden="true"></i></div>
+          <div><div class="ic-lbl">Periode</div><div class="ic-val">2025/2026 Ganjil</div></div>
+        </div>
+        <div class="icard">
+          <div class="ic-ico"><i class="ti ti-users" aria-hidden="true"></i></div>
+          <div><div class="ic-lbl">Total Mahasiswa</div><div class="ic-val">42 Orang</div></div>
+        </div>
+      </div>
+
+      <div class="content-row">
+        <div>
+          <div class="card">
+            <div class="card-hd">
+              <div class="card-hd-title"><i class="ti ti-settings-2" aria-hidden="true"></i>Konfigurasi Laporan</div>
+              <div class="req-hint">Field <span>*</span> wajib diisi</div>
+            </div>
+            <div class="card-bd">
+              <div class="ffull">
+                <label class="flabel">Jenis Laporan <span class="req">*</span></label>
+                <div class="sw">
+                  <select id="sel-jenis">
+                    <option value="nilai" selected>Nilai Mahasiswa</option>
+                    <option value="rekap">Rekap Kelas</option>
+                    <option value="aktivitas">Aktivitas Mengajar</option>
+                  </select>
+                  <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="fgrid2">
+                <div>
+                  <label class="flabel">Kelas <span class="req">*</span></label>
+                  <div class="sw">
+                    <select id="sel-kelas">
+                      <option selected>IF3110-A</option>
+                      <option>IF3110-B</option>
+                      <option>IF3120-A</option>
+                    </select>
+                    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div>
+                  <label class="flabel">Periode <span class="req">*</span></label>
+                  <div class="sw">
+                    <select id="sel-periode">
+                      <option selected>2025/2026 Ganjil</option>
+                      <option>2025/2026 Genap</option>
+                    </select>
+                    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label class="flabel">Format Output <span class="req">*</span></label>
+                <div class="fmt-row">
+                  <label class="fmtc" id="card-pdf" onclick="pickFmt('pdf')">
+                    <input type="radio" name="fmt" value="pdf" id="r-pdf">
+                    <div class="fmtico pdf"><i class="ti ti-file-type-pdf" aria-hidden="true"></i></div>
+                    <div><div class="fmt-name">PDF</div><div class="fmt-ext">Dokumen siap cetak</div></div>
+                  </label>
+                  <label class="fmtc sel" id="card-xlsx" onclick="pickFmt('xlsx')">
+                    <input type="radio" name="fmt" value="xlsx" id="r-xlsx" checked>
+                    <div class="fmtico xlsx"><i class="ti ti-file-spreadsheet" aria-hidden="true"></i></div>
+                    <div><div class="fmt-name">Excel (.xlsx)</div><div class="fmt-ext">Data dapat diedit</div></div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="prev-hd">
+                <div class="prev-title"><i class="ti ti-table" aria-hidden="true"></i>Preview Laporan — Nilai Mahasiswa</div>
+                <span class="badge-ok"><i class="ti ti-circle-check" aria-hidden="true"></i>Siap Diekspor</span>
+              </div>
+              <div class="tbl-scroll">
+                <table>
+                  <colgroup>
+                    <col style="width:140px"><col style="width:180px"><col style="width:70px"><col style="width:60px"><col style="width:60px"><col style="width:90px"><col style="width:60px">
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>NIM</th><th>Nama Mahasiswa</th><th>Tugas</th><th>UTS</th><th>UAS</th><th>Nilai Akhir</th><th>Grade</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>2108107010012</td><td>Ahmad Rifqi</td><td>88</td><td>85</td><td>90</td><td><strong>88.7</strong></td><td class="ga">A</td></tr>
+                    <tr><td>2108107010045</td><td>Siti Maryam</td><td>77</td><td>78</td><td>82</td><td><strong>79.0</strong></td><td class="gb">B+</td></tr>
+                    <tr><td>2108107010031</td><td>Budi Hartono</td><td>94</td><td>92</td><td>96</td><td><strong>94.3</strong></td><td class="ga">A</td></tr>
+                    <tr><td>2108107010078</td><td>Dewi Ananta</td><td>62</td><td>55</td><td>68</td><td><strong>62.0</strong></td><td class="gc">C</td></tr>
+                    <tr><td>2108107010022</td><td>Farhan Ramadhan</td><td>83</td><td>80</td><td>85</td><td><strong>82.7</strong></td><td class="ga">A-</td></tr>
+                    <tr><td>2108107010055</td><td>Laila Husna</td><td>90</td><td>88</td><td>91</td><td><strong>89.8</strong></td><td class="ga">A</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="stat-area" id="stat-area" style="display:none;"></div>
+
+            <div class="act-footer">
+              <div class="autosave"><i class="ti ti-circle-check" aria-hidden="true"></i>Tersimpan otomatis sebagai draft · 14:02 WIB</div>
+              <div class="btn-row">
+                <button class="btn btn-out" onclick="doGenerate()"><i class="ti ti-refresh" aria-hidden="true"></i>Generate Laporan</button>
+                <button class="btn btn-prim" id="btn-dl" disabled onclick="doDownload()"><i class="ti ti-download" aria-hidden="true"></i>Download Laporan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <div class="card-hd">
+              <div class="card-hd-title"><i class="ti ti-history" aria-hidden="true"></i>Riwayat Laporan</div>
+            </div>
+            <div class="rw-item">
+              <div class="rw-ico pdf"><i class="ti ti-file-type-pdf" aria-hidden="true"></i></div>
+              <div class="rw-info"><div class="rw-name">Laporan Nilai Mahasiswa.pdf</div><div class="rw-date">17 Jun 2025 · 10:24 WIB</div></div>
+              <div class="rw-dl"><i class="ti ti-download" aria-hidden="true"></i></div>
+            </div>
+            <div class="rw-item">
+              <div class="rw-ico xlsx"><i class="ti ti-file-spreadsheet" aria-hidden="true"></i></div>
+              <div class="rw-info"><div class="rw-name">Rekap Kelas IF3110-A.xlsx</div><div class="rw-date">12 Jun 2025 · 14:07 WIB</div></div>
+              <div class="rw-dl"><i class="ti ti-download" aria-hidden="true"></i></div>
+            </div>
+            <div class="rw-item">
+              <div class="rw-ico pdf"><i class="ti ti-file-type-pdf" aria-hidden="true"></i></div>
+              <div class="rw-info"><div class="rw-name">Aktivitas Mengajar.pdf</div><div class="rw-date">05 Jun 2025 · 09:45 WIB</div></div>
+              <div class="rw-dl"><i class="ti ti-download" aria-hidden="true"></i></div>
+            </div>
+            <div class="rw-item">
+              <div class="rw-ico xlsx"><i class="ti ti-file-spreadsheet" aria-hidden="true"></i></div>
+              <div class="rw-info"><div class="rw-name">Nilai Mahasiswa IF3120.xlsx</div><div class="rw-date">28 Mei 2025 · 16:30 WIB</div></div>
+              <div class="rw-dl"><i class="ti ti-download" aria-hidden="true"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  function scale(){
+    var root=document.getElementById('root');
+    var avail=document.querySelector('.scaler').offsetWidth;
+    var s=Math.min(1,avail/1440);
+    root.style.transform='scale('+s+')';
+    root.style.height='';
+    root.parentElement.style.height=(900*s)+'px';
+  }
+  scale();
+  window.addEventListener('resize',scale);
+})();
+
+function pickFmt(f){
+  document.getElementById('card-pdf').classList.toggle('sel',f==='pdf');
+  document.getElementById('card-xlsx').classList.toggle('sel',f==='xlsx');
+  document.getElementById('r-pdf').checked=f==='pdf';
+  document.getElementById('r-xlsx').checked=f==='xlsx';
+}
+
+var generated=false;
+function doGenerate(){
+  var sa=document.getElementById('stat-area');
+  var ext=document.getElementById('r-xlsx').checked?'xlsx':'pdf';
+  var kelas=document.getElementById('sel-kelas').value||'IF3110-A';
+  sa.style.display='block';
+  sa.innerHTML='<div class="sbox loading"><i class="ti ti-loader spin" aria-hidden="true"></i><div><div class="st">Sedang memproses laporan...</div><div class="ss">Mengambil data nilai '+kelas+' · 2025/2026 Ganjil</div></div></div>';
+  setTimeout(function(){
+    generated=true;
+    sa.innerHTML='<div class="sbox ok"><i class="ti ti-circle-check" aria-hidden="true"></i><div><div class="st">Laporan berhasil dibuat</div><div class="ss">Laporan_Nilai_'+kelas+'_Ganjil_2526.'+ext+' — tersimpan ke D7</div></div></div>';
+    var b=document.getElementById('btn-dl');
+    b.disabled=false;
+    b.style.background='#15803D';
+    b.style.cursor='pointer';
+  },2000);
+}
+function doDownload(){
+  if(!generated)return;
+  var sa=document.getElementById('stat-area');
+  sa.innerHTML='<div class="sbox ok"><i class="ti ti-circle-check" aria-hidden="true"></i><div><div class="st">File berhasil diunduh ke perangkat</div><div class="ss">Cek folder Downloads Anda</div></div></div>';
+}
+</script>
